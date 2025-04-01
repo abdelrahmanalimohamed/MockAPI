@@ -8,11 +8,12 @@ The API includes methods to interact with the mock API for retrieving, adding, a
 
 ## Features
 
-1. **Data Retrieval**: Retrieve data from the mock API with filtering by name (substring) and pagination support.
-2. **Add Data**: Add new product data to the mock API.
-3. **Remove Data**: Remove existing product data from the mock API.
-4. **Validation**: Ensure that the product data is valid before adding or updating.
-5. **Error Handling**: Provide clear error messages in case of failure.
+1.- **Clean Architecture**: Implements a clean architecture pattern for better maintainability and scalability.
+2. **Data Retrieval**: Retrieve data from the mock API with filtering by name (substring) and pagination support.
+3. **Add Data**: Add new product data to the mock API.
+4. **Remove Data**: Remove existing product data from the mock API.
+5. **Validation**: Ensure that the product data is valid before adding or updating.
+6. **Error Handling**: Provide clear error messages in case of failure.
 
 ## Technologies Used
 
