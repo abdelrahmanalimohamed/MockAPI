@@ -8,7 +8,7 @@ The API includes methods to interact with the mock API for retrieving, adding, a
 
 ## Features
 
-1.- **Clean Architecture**: Implements a clean architecture pattern for better maintainability and scalability.
+1. **Clean Architecture**: Implements a clean architecture pattern for better maintainability and scalability.
 2. **Data Retrieval**: Retrieve data from the mock API with filtering by name (substring) and pagination support.
 3. **Add Data**: Add new product data to the mock API.
 4. **Remove Data**: Remove existing product data from the mock API.
