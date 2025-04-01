@@ -17,11 +17,12 @@ The API includes methods to interact with the mock API for retrieving, adding, a
 
 ## Technologies Used
 
-- **Framework**: .NET 8.0
-- **Model Validation**: FluentValidation
-- **Error Handling**: Custom exception handling middleware
-- **Testing**: XUnit for unit testing
-- **Logging**: Structured logging with ILogger
+- **Framework**: .NET CORE 8.0
+- **MediatR**: For CQRS pattern implementation.
+- **FluentValidation**: For input validation.
+- **Logger**: To log error and validation information.
+- **Exception Handling Middleware**: Custom middleware to handle and return detailed error responses.
+- **XUnit**: For unit testing.
 
 ## Setup & Installation
 
