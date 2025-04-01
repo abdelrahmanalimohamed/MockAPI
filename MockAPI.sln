@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockAPI.Domain", "src\MockAPI.Domain\MockAPI.Domain.csproj", "{78B9CBB7-2656-4517-9D36-6C2F7BAC0393}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockAPI.Application", "src\MockAPI.Application\MockAPI.Application.csproj", "{7E802CA5-D357-4034-8C71-DBB4FBF49B4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockAPI.Infrastructure", "src\MockAPI.Infrastructure\MockAPI.Infrastructure.csproj", "{3B0A7A2E-20F3-440D-B207-57BB8FB4D374}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockAPI.Presentation", "src\MockAPI.Presentation\MockAPI.Presentation.csproj", "{450C899E-8363-423B-9AB2-8224B752FE9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0F9D256E-5836-432D-AEC1-F0154F712F32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockAPI.Tests", "test\MockAPI.Tests\MockAPI.Tests.csproj", "{E16998A6-71C1-40BE-A2DC-5BB496DB2C47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78B9CBB7-2656-4517-9D36-6C2F7BAC0393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78B9CBB7-2656-4517-9D36-6C2F7BAC0393}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78B9CBB7-2656-4517-9D36-6C2F7BAC0393}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78B9CBB7-2656-4517-9D36-6C2F7BAC0393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E802CA5-D357-4034-8C71-DBB4FBF49B4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E802CA5-D357-4034-8C71-DBB4FBF49B4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E802CA5-D357-4034-8C71-DBB4FBF49B4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E802CA5-D357-4034-8C71-DBB4FBF49B4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B0A7A2E-20F3-440D-B207-57BB8FB4D374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B0A7A2E-20F3-440D-B207-57BB8FB4D374}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B0A7A2E-20F3-440D-B207-57BB8FB4D374}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B0A7A2E-20F3-440D-B207-57BB8FB4D374}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450C899E-8363-423B-9AB2-8224B752FE9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450C899E-8363-423B-9AB2-8224B752FE9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450C899E-8363-423B-9AB2-8224B752FE9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450C899E-8363-423B-9AB2-8224B752FE9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E16998A6-71C1-40BE-A2DC-5BB496DB2C47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E16998A6-71C1-40BE-A2DC-5BB496DB2C47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E16998A6-71C1-40BE-A2DC-5BB496DB2C47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E16998A6-71C1-40BE-A2DC-5BB496DB2C47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{78B9CBB7-2656-4517-9D36-6C2F7BAC0393} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{7E802CA5-D357-4034-8C71-DBB4FBF49B4E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{3B0A7A2E-20F3-440D-B207-57BB8FB4D374} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{450C899E-8363-423B-9AB2-8224B752FE9E} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{E16998A6-71C1-40BE-A2DC-5BB496DB2C47} = {0F9D256E-5836-432D-AEC1-F0154F712F32}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {65D62129-EB11-48B8-BC39-F36E8D25237F}
+	EndGlobalSection
+EndGlobal
