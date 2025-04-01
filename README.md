@@ -1,5 +1,5 @@
 
-# Product API Integration with Mock API
+# Product API Integration
 
 ## Overview
 
