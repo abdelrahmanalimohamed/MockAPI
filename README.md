@@ -11,9 +11,10 @@ The API includes methods to interact with the mock API for retrieving, adding, a
 1. **Clean Architecture**: Implements a clean architecture pattern for better maintainability and scalability.
 2. **Data Retrieval**: Retrieve data from the mock API with filtering by name (substring) and pagination support.
 3. **Add Data**: Add new product data to the mock API.
-4. **Remove Data**: Remove existing product data from the mock API.
-5. **Validation**: Ensure that the product data is valid before adding or updating.
-6. **Error Handling**: Provide clear error messages in case of failure.
+4. **Update Data**: Update existing product data to the mock API.
+5. **Remove Data**: Remove existing product data from the mock API.
+6. **Validation**: Ensure that the product data is valid before adding or updating.
+7. **Error Handling**: Provide clear error messages in case of failure.
 
 ## Technologies Used
 
@@ -72,7 +73,7 @@ If you need to modify settings such as the mock API base URL, you can adjust the
 
 ## API Endpoints
 
-### 1. **GET** `/api/products`
+### 1. **GET** `/api/Products/GetAllProducts`
 Retrieve a list of products from the mock API with the ability to filter by name (substring) and pagination.
 
 #### Query Parameters:
@@ -82,7 +83,7 @@ Retrieve a list of products from the mock API with the ability to filter by name
 
 #### Example Request:
 ```http
-GET http://localhost:5000/api/products?search=Sample&page=1&pageSize=10
+GET http://localhost:5000//api/Products/GetAllProducts?page=1&pageSize=10
 ```
 
 #### Response:
@@ -129,21 +130,29 @@ GET http://localhost:5000/api/products?search=Sample&page=1&pageSize=10
 ]
 ```
 
-### 2. **POST** `/api/products`
+### 2. **POST** `api/Products/CreateNewProduct`
 Add a new product to the mock API.
 
 #### Request Body:
 ```json
 {
   "name": "New Product",
-  "description": "This is a new product",
-  "price": 25.99
+}
+```
+
+### 3. **Put** `api/Products/UpdateProduct/{id}`
+Update an existing product to the mock API.
+
+#### Request Body:
+```json
+{
+  "name": "New Product",
 }
 ```
 
 #### Example Request:
 ```http
-POST http://localhost:5000/api/products
+POST http://localhost:5000/api/Products/UpdateProduct/{id}
 ```
 
 #### Response:
@@ -167,12 +176,12 @@ POST http://localhost:5000/api/products
 }
 ```
 
-### 3. **DELETE** `/api/products/{id}`
+### 3. **DELETE** `api/Products/DeleteProduct/{id}`
 Remove a product by ID from the mock API.
 
 #### Example Request:
 ```http
-DELETE http://localhost:5000/api/products/123
+DELETE http://localhost:5000/api/Products/DeleteProduct/123
 ```
 
 #### Response:
