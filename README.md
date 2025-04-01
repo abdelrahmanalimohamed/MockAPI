@@ -245,7 +245,7 @@ For validation errors, a **400 Bad Request** status will be returned with the sp
 Unit tests are written using **XUnit** and are located in the `tests` directory. To run the unit tests:
 
 ### 1. Navigate to the `tests` directory:
-cd tests
+cd tests\MockAPI.Tests
 ```
 
 ### 2. Run the tests:
