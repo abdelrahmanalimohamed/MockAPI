@@ -16,28 +16,28 @@ public class ProductsController : ControllerBase
 		_mediator = mediator;
 	}
 
-	[HttpGet]
+	[HttpGet("GetAllProducts")]
 	public async Task<IActionResult> GetProducts([FromQuery] string? search, [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
 	{
 		var products = await _mediator.Send(new GetProductsQuery(search, page, pageSize));
 		return Ok(products);
 	}
 
-	[HttpPost]
+	[HttpPost("CreateNewProduct")]
 	public async Task<IActionResult> CreateProduct([FromBody] CreateProductDto createProductDto)
 	{
 		var createdProduct = await _mediator.Send(new CreateProductCommand(createProductDto));
 		return Ok(createdProduct);
 	}
 
-	[HttpDelete("{Id}")]
+	[HttpDelete("DeleteProduct/{Id}")]
 	public async Task<IActionResult> DeleteProduct([FromRoute] string Id)
 	{
 		var deletedProduct = await _mediator.Send(new DeleteProductCommand(Id));
 		return Ok(deletedProduct);
 	}
 
-	[HttpPut("{id}")]
+	[HttpPut("UpdateProduct/{id}")]
 	public async Task<IActionResult> UpdateProduct([FromRoute] string id , [FromBody] UpdateProductDto updateProductDto)
 	{
 		var updatedProduct = await _mediator.Send(new UpdateProductCommand(id, updateProductDto));
