@@ -1,7 +1,6 @@
 ﻿using System.Net;
 
 namespace MockAPI.Application.Exceptions;
-
 public class ApiException : Exception
 {
 	public HttpStatusCode StatusCode { get; }

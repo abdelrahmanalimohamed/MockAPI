@@ -1,13 +1,11 @@
-﻿namespace MockAPI.Application.Exceptions
+﻿namespace MockAPI.Application.Exceptions;
+public sealed class ValidationExceptions : Exception
 {
-	public sealed class ValidationExceptions : Exception
-	{
-		public IDictionary<string, string[]> Errors { get; }
+	public IDictionary<string, string[]> Errors { get; }
 
-		public ValidationExceptions(IDictionary<string, string[]> errors)
-			: base("Validation failed")
-		{
-			Errors = errors;
-		}
+	public ValidationExceptions(IDictionary<string, string[]> errors)
+		: base("Validation failed")
+	{
+		Errors = errors;
 	}
 }

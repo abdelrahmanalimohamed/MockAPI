@@ -63,5 +63,4 @@ public class ValidationBehaviorTests
 		// Act & Assert
 		await Assert.ThrowsAsync<ValidationExceptions>(() => behavior.Handle(request, _mockNext.Object, CancellationToken.None));
 	}
-
 }

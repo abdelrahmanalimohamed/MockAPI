@@ -4,7 +4,6 @@ using MockAPI.Application.Responses;
 using MockAPI.Domain.Entities;
 
 namespace MockAPI.Application.Interfaces;
-
 public interface IProductRepository
 {
 	Task<PaginatedResult<Product>> GetProductsAsync(string? search, int page, int pageSize , CancellationToken cancellationToken);
