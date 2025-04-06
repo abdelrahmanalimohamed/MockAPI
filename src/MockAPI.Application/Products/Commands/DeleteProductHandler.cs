@@ -3,7 +3,7 @@ using MockAPI.Application.Interfaces;
 using MockAPI.Application.Responses;
 
 namespace MockAPI.Application.Products.Commands;
-public sealed class DeleteProductHandler : IRequestHandler<DeleteProductCommand, DeletedProductResponse>
+internal sealed class DeleteProductHandler : IRequestHandler<DeleteProductCommand, DeletedProductResponse>
 {
 	private readonly IProductRepository _productRepository;
 	public DeleteProductHandler(IProductRepository productRepository)
