@@ -158,21 +158,10 @@ POST http://localhost:5000/api/Products/UpdateProduct/{id}
 #### Response:
 ```json
 {
-  "id": "string",
-  "name": "string",
-  "data": {
-    "color": "string",
-    "capacity": "string",
-    "price": "string",
-    "generation": "string",
-    "year": 0,
-    "cpuModel": "string",
-    "hardDiskSize": "string",
-    "strapColour": "string",
-    "caseSize": "string",
-    "description": "string",
-    "screenSize": 0
-  }
+  "id":"ff808181932badb60195f18463d67a01",
+  "name":"New Product",
+  "createdAt":"2025-04-01T13:22:20.246+00:00",
+  "data":null
 }
 ```
 
@@ -245,7 +234,7 @@ For validation errors, a **400 Bad Request** status will be returned with the sp
 Unit tests are written using **XUnit** and are located in the `tests` directory. To run the unit tests:
 
 ### 1. Navigate to the `tests` directory:
-cd tests
+cd tests\MockAPI.Tests
 ```
 
 ### 2. Run the tests:
