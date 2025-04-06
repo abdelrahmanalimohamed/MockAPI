@@ -35,13 +35,21 @@ public sealed class ExceptionHandling
 		if (exception is ValidationExceptions validationException)
 		{
 			status = HttpStatusCode.BadRequest;
-			response = new { message = "Validation error", errors = validationException.Errors };
+			response = new { error = "Validation error", errors = validationException.Errors };
 			_logger.LogWarning("Validation error occurred: {Errors}", validationException.Errors);
 		}
+
+		else if (exception is ApiException apiException)
+		{
+			status = apiException.StatusCode;
+			response = new { error = exception.Message };
+			_logger.LogError(apiException, "Handled exception with status code {StatusCode}: {Message}", status, exception.Message);
+		}
+
 		else
 		{
 			status = HttpStatusCode.InternalServerError;
-			response = new { message = exception.Message };
+			response = new { error = exception.Message };
 			_logger.LogError(exception, "Unhandled exception: {Message}", exception.Message);
 		}
 

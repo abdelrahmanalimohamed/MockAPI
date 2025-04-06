@@ -53,7 +53,7 @@ public class ExceptionHandlingTests
 		var response = JsonSerializer.Deserialize<Dictionary<string, string>>(responseString);
 
 		Assert.NotNull(response);
-		Assert.Equal(exception.Message, response["message"]);
+		Assert.Equal(exception.Message, response["error"]);
 
 		_mockLogger.Verify(
 		l => l.Log(
@@ -87,7 +87,7 @@ public class ExceptionHandlingTests
 		var response = JsonSerializer.Deserialize<Dictionary<string, object>>(responseString);
 
 		Assert.NotNull(response);
-		Assert.Equal("Validation error", response["message"].ToString());
+		Assert.Equal("Validation error", response["error"].ToString());
 		Assert.NotNull(response["errors"]);
 
 		_mockLogger.Verify(
@@ -100,5 +100,40 @@ public class ExceptionHandlingTests
 				),
 				Times.Once
 			);
+	}
+
+
+	[Fact]
+	public async Task Invoke_WhenApiExceptionThrown_ShouldReturnApiExceptionError()
+	{
+		// Arrange
+		var apiException = new ApiException(HttpStatusCode.NotFound, "Not Found");
+		_mockNext.Setup(n => n(It.IsAny<HttpContext>())).ThrowsAsync(apiException);
+
+		var context = new DefaultHttpContext();
+		context.Response.Body = new MemoryStream();
+
+		// Act
+		await _middleware.Invoke(context);
+
+		// Assert
+		Assert.Equal((int)HttpStatusCode.NotFound, context.Response.StatusCode);
+
+		context.Response.Body.Seek(0, SeekOrigin.Begin);
+		var responseString = await new StreamReader(context.Response.Body).ReadToEndAsync();
+		var response = JsonSerializer.Deserialize<Dictionary<string, string>>(responseString);
+
+		Assert.NotNull(response);
+		Assert.Equal("Not Found", response["error"]);
+
+		_mockLogger.Verify(
+		l => l.Log(
+			LogLevel.Error,
+			It.IsAny<EventId>(),
+			It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("Handled exception with status code")),
+			It.Is<Exception>(ex => ex is ApiException && ex.Message == "Not Found"),
+			It.IsAny<Func<It.IsAnyType, Exception, string>>()
+		),
+		Times.Once);
 	}
 }

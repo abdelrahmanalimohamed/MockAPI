@@ -77,28 +77,32 @@ public class ProductServices : IProductRepository
 
 		return createdProductResponse;
 	}
-	public async Task<string?> DeleteProductAsync(string id , CancellationToken cancellationToken)
+	public async Task<DeletedProductResponse> DeleteProductAsync(string id , CancellationToken cancellationToken)
 	{
 		var response = await _httpClient.DeleteAsync($"{_baseUrl}/{id}", cancellationToken);
+		var responseData = await response.Content.ReadAsStringAsync(cancellationToken);
 
 		if (!response.IsSuccessStatusCode)
 		{
-			var content = await response.Content.ReadAsStringAsync(cancellationToken);
-			var errorResponse = JsonSerializer.Deserialize<ErrorResponse>(content, new JsonSerializerOptions
+			var errorResponse = JsonSerializer.Deserialize<ErrorResponse>(responseData, new JsonSerializerOptions
 			{
 				PropertyNameCaseInsensitive = true
 			});
 
-			return errorResponse?.Error;
+			throw new ApiException(response.StatusCode, errorResponse?.Error);
 		}
 
-		var successContent = await response.Content.ReadAsStringAsync(cancellationToken);
-		var successResponse = JsonSerializer.Deserialize<DeletedProductResponse>(successContent, new JsonSerializerOptions
+		var deletedProductResponse = JsonSerializer.Deserialize<DeletedProductResponse>(responseData, new JsonSerializerOptions
 		{
 			PropertyNameCaseInsensitive = true
 		});
 
-		return successResponse?.Message;
+		if (deletedProductResponse == null)
+		{
+			throw new ApiException(HttpStatusCode.InternalServerError, "The API response was null or invalid.");
+		}
+
+		return deletedProductResponse;
 	}
 	public async Task<UpdatedProductResponse> UpdateProductAsync(string Id , UpdateProductDto updateProductDto, CancellationToken cancellationToken)
 	{

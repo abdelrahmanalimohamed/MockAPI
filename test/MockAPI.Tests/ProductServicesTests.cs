@@ -97,10 +97,13 @@ public class ProductServicesTests
 	}
 
 	[Fact]
-	public async Task DeleteProductAsync_ReturnsMessage_WhenApiReturnsSuccess()
+	public async Task DeleteProductAsync_ReturnsDeletedProductResponse_WhenApiReturnsSuccess()
 	{
-		var successResponse = new { Message = "Product deleted successfully" };
-		var jsonResponse = JsonSerializer.Serialize(successResponse);
+		// Arrange
+		var id = "123";
+		var expectedResponse = new DeletedProductResponse { Message = "Product deleted successfully" };
+
+		var jsonResponse = JsonSerializer.Serialize(expectedResponse);
 		var responseMessage = new HttpResponseMessage(HttpStatusCode.OK)
 		{
 			Content = new StringContent(jsonResponse, Encoding.UTF8, "application/json")
@@ -110,14 +113,19 @@ public class ProductServicesTests
 			.Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
 			.ReturnsAsync(responseMessage);
 
-		var result = await _productServices.DeleteProductAsync("123", CancellationToken.None);
+		// Act
+		var result = await _productServices.DeleteProductAsync(id, CancellationToken.None);
 
-		Assert.Equal("Product deleted successfully", result);
+		// Assert
+		Assert.NotNull(result);
+		Assert.Equal("Product deleted successfully", result.Message);
 	}
 
 	[Fact]
-	public async Task DeleteProductAsync_ReturnsErrorMessage_WhenApiReturnsError()
+	public async Task DeleteProductAsync_ThrowsApiException_WhenApiReturnsError()
 	{
+		// Arrange
+		var id = "123";
 		var errorResponse = new { Error = "Product not found" };
 		var jsonResponse = JsonSerializer.Serialize(errorResponse);
 		var responseMessage = new HttpResponseMessage(HttpStatusCode.NotFound)
@@ -129,9 +137,11 @@ public class ProductServicesTests
 			.Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
 			.ReturnsAsync(responseMessage);
 
-		var result = await _productServices.DeleteProductAsync("999", CancellationToken.None);
+		// Act & Assert
+		var exception = await Assert.ThrowsAsync<ApiException>(() => _productServices.DeleteProductAsync(id, CancellationToken.None));
 
-		Assert.Equal("Product not found", result);
+		Assert.Equal(HttpStatusCode.NotFound, exception.StatusCode);
+		Assert.Equal("Product not found", exception.Message);
 	}
 
 	[Fact]
