@@ -3,6 +3,7 @@ using FluentValidation;
 using MediatR;
 using MockAPI.Application.Exceptions;
 
+namespace MockAPI.Application.Behaviors;
 public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
 	where TRequest : notnull
 {

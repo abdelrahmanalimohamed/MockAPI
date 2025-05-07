@@ -6,14 +6,6 @@ public sealed class CreateProductDtoValidator : AbstractValidator<CreateProductD
 {
 	public CreateProductDtoValidator()
 	{
-		RuleFor(x => x.id)
-			   .NotEmpty().WithMessage("Product ID is required.");
-
-		RuleFor(x => x.name)
-			.NotEmpty().WithMessage("Product name is required.");
-
-		RuleFor(x => x.Data)
-		 .NotEmpty().WithMessage("Product data is required.")
-		 .When(x => x.Data != null);
+		RuleFor(x => x.name).ValidateProductName();
 	}
 }

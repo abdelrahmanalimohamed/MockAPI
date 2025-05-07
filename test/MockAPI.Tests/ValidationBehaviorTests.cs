@@ -2,6 +2,7 @@
 using FluentValidation.Results;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using MockAPI.Application.Behaviors;
 using MockAPI.Application.DTO;
 using MockAPI.Application.Exceptions;
 using MockAPI.Application.Products.Commands;
@@ -30,7 +31,7 @@ public class ValidationBehaviorTests
 		// Arrange
 		var validators = new List<IValidator<CreateProductCommand>> { _mockValidator.Object };
 		var behavior = new ValidationBehavior<CreateProductCommand, CreatedProductResponse>(validators, _serviceProvider);
-		var request = new CreateProductCommand(new CreateProductDto("1", "TestProduct", new ProductData()));
+		var request = new CreateProductCommand(new CreateProductDto("TestProduct", new ProductData()));
 
 		_mockValidator.Setup(v => v.ValidateAsync(request, It.IsAny<CancellationToken>()))
 			.ReturnsAsync(new ValidationResult());
@@ -50,7 +51,7 @@ public class ValidationBehaviorTests
 		// Arrange
 		var validators = new List<IValidator<CreateProductCommand>> { _mockValidator.Object };
 		var behavior = new ValidationBehavior<CreateProductCommand, CreatedProductResponse>(validators, _serviceProvider);
-		var request = new CreateProductCommand(new CreateProductDto("1", "TestProduct", new ProductData()));
+		var request = new CreateProductCommand(new CreateProductDto("TestProduct", new ProductData()));
 
 		var failures = new List<ValidationFailure>
 		{

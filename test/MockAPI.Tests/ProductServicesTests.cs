@@ -55,7 +55,7 @@ public class ProductServicesTests
 	[Fact]
 	public async Task AddProductAsync_ReturnsCreatedProductResponse_WhenApiReturnsSuccess()
 	{
-		var createProductDto = new CreateProductDto("123", "New Product", new ProductData());
+		var createProductDto = new CreateProductDto("New Product", new ProductData());
 		var createdResponse = new CreatedProductResponse { Id = "123", Name = "New Product" };
 
 		var jsonResponse = JsonSerializer.Serialize(createdResponse);
@@ -78,7 +78,7 @@ public class ProductServicesTests
 	[Fact]
 	public async Task AddProductAsync_ThrowsApiException_WhenApiReturnsError()
 	{
-		var createProductDto = new CreateProductDto("123", "New Product", new ProductData());
+		var createProductDto = new CreateProductDto("New Product", new ProductData());
 		var errorResponse = new { Error = "Bad Request" };
 		var jsonResponse = JsonSerializer.Serialize(errorResponse);
 		var responseMessage = new HttpResponseMessage(HttpStatusCode.BadRequest)
@@ -149,7 +149,7 @@ public class ProductServicesTests
 	{
 		// Arrange
 		var productId = "123";
-		var updateProductDto = new UpdateProductDto( productId , "Updated Product" , new ProductData());
+		var updateProductDto = new UpdateProductDto("Updated Product" , new ProductData());
 		var expectedResponse = new UpdatedProductResponse { Id = "123", Name = "Updated Product" };
 
 		var jsonResponse = JsonSerializer.Serialize(expectedResponse);
@@ -185,7 +185,7 @@ public class ProductServicesTests
 	{
 		// Arrange
 		var productId = "123"; 
-		var updateProductDto = new UpdateProductDto(productId, "Updated Product", new ProductData());
+		var updateProductDto = new UpdateProductDto("Updated Product", new ProductData());
 		var errorResponse = new ErrorResponse { Error = "Invalid request" };
 
 		var jsonResponse = JsonSerializer.Serialize(errorResponse);
@@ -220,7 +220,7 @@ public class ProductServicesTests
 	{
 		// Arrange
 		var productId = "123";
-		var updateProductDto = new UpdateProductDto(productId, "Updated Product", new ProductData());
+		var updateProductDto = new UpdateProductDto( "Updated Product", new ProductData());
 
 		var httpResponse = new HttpResponseMessage
 		{

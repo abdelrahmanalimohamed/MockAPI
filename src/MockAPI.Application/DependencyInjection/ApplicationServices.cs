@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using MockAPI.Application.Behaviors;
 using System.Reflection;
 
 namespace MockAPI.Application.DependencyInjection;
