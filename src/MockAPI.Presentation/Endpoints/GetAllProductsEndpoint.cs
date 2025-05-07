@@ -5,10 +5,10 @@ using MockAPI.Application.Products.Queries;
 using MockAPI.Domain.Entities;
 namespace MockAPI.Presentation.Endpoints;
 
-public class GetProducts : Endpoint<GetProductsRequest, GetProductsResponse>
+public class GetAllProductsEndpoint : Endpoint<GetProductsRequest, GetProductsResponse>
 {
 	private readonly IMediator _mediator;
-	public GetProducts(IMediator mediator)
+	public GetAllProductsEndpoint(IMediator mediator)
 	{
 		_mediator = mediator;
 	}

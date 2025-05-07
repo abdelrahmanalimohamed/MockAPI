@@ -5,10 +5,10 @@ using MockAPI.Application.Responses;
 
 namespace MockAPI.Presentation.Endpoints;
 
-public class DeleteProduct : Endpoint<DeleteProductRequest , DeletedProductResponse>
+public class DeleteProductEndpoint : Endpoint<DeleteProductRequest , DeletedProductResponse>
 {
 	private readonly IMediator _mediator;
-	public DeleteProduct(IMediator mediator)
+	public DeleteProductEndpoint(IMediator mediator)
 	{
 		_mediator = mediator;
 	}

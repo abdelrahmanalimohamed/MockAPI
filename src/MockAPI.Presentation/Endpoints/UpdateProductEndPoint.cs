@@ -6,10 +6,10 @@ using MockAPI.Application.Responses;
 
 namespace MockAPI.Presentation.Endpoints
 {
-	public class UpdateProduct : Endpoint<UpdateProductRequest, UpdatedProductResponse>
+	public class UpdateProductEndPoint : Endpoint<UpdateProductRequest, UpdatedProductResponse>
 	{
 		private readonly IMediator _mediator;
-		public UpdateProduct(IMediator mediator)
+		public UpdateProductEndPoint(IMediator mediator)
 		{
 			_mediator = mediator;
 		}
